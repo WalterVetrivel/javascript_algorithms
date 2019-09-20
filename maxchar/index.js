@@ -13,7 +13,7 @@ function maxCharBasic(str) {
 		char = sorted[0],
 		maxChar = char;
 
-	for (let i = 1; i < sorted.length - 2; i++) {
+	for (let i = 1; i < sorted.length - 1; i++) {
 		if (sorted[i] === char) {
 			count++;
 		} else {
@@ -35,11 +35,7 @@ function maxCharObject(str) {
 	let maxChar = str[0];
 
 	for (c of str) {
-		if (charCount.hasOwnProperty(c)) {
-			charCount[c]++;
-		} else {
-			charCount[c] = 0;
-		}
+		charCount.hasOwnProperty(c) ? charCount[c]++ : (charCount[c] = 0);
 	}
 
 	Object.keys(charCount).reduce((count, key) => {
