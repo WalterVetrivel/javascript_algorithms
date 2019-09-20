@@ -30,8 +30,32 @@ function maxCharBasic(str) {
 	return maxChar;
 }
 
+function maxCharObject(str) {
+	let charCount = {};
+	let maxChar = str[0];
+
+	for (c of str) {
+		if (charCount.hasOwnProperty(c)) {
+			charCount[c]++;
+		} else {
+			charCount[c] = 0;
+		}
+	}
+
+	Object.keys(charCount).reduce((count, key) => {
+		if (charCount[key] > count) {
+			maxChar = key;
+			return charCount[key];
+		}
+		return count;
+	}, 1);
+
+	return maxChar;
+}
+
 function maxChar(str) {
-	return maxCharBasic(str);
+	// return maxCharBasic(str);
+	return maxCharObject(str);
 }
 
 module.exports = maxChar;
