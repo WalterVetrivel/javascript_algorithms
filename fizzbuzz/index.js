@@ -12,6 +12,58 @@
 //   4
 //   buzz
 
-function fizzBuzz(n) {}
+function isMultiple(n, div) {
+	return n % div === 0;
+}
+
+function printStatement(i) {
+	return isMultiple(i, 3 * 5)
+		? 'fizzbuzz'
+		: isMultiple(i, 3)
+		? 'fizz'
+		: isMultiple(i, 5)
+		? 'buzz'
+		: i;
+}
+
+function fizzBuzzTernary(n) {
+	for (let i = 1; i <= n; i++) {
+		console.log(printStatement(i));
+	}
+}
+
+function fizzBuzzIf(n) {
+	for (let i = 1; i <= n; i++) {
+		if (isMultiple(i, 3 * 5)) console.log('fizzbuzz');
+		else if (isMultiple(i, 3)) console.log('fizz');
+		else if (isMultiple(i, 5)) console.log('buzz');
+		else console.log(i);
+	}
+}
+
+function fizzBuzzSwitch(n) {
+	for (let i = 1; i <= n; i++) {
+		switch (true) {
+			case isMultiple(i, 3 * 5):
+				console.log('fizzbuzz');
+				break;
+			case isMultiple(i, 3):
+				console.log('fizz');
+				break;
+			case isMultiple(i, 5):
+				console.log('buzz');
+				break;
+			default:
+				console.log(i);
+				break;
+		}
+	}
+}
+
+function fizzBuzz(n) {
+	// fizzBuzzSwitch(n);
+	// fizzBuzzIf(n);
+	fizzBuzzTernary(n);
+}
 
 module.exports = fizzBuzz;
