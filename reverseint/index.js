@@ -13,21 +13,19 @@ function reverseString(str) {
 }
 
 function reverseIntAsString(n) {
-	let numStr = Math.abs(n) + '';
-	const mul = n < 0 ? -1 : 1;
+	let numStr = Math.abs(n).toString();
 	numStr = reverseString(numStr);
-	return parseInt(numStr) * mul;
+	return parseInt(numStr) * Math.sign(n);
 }
 
 function reverseIntAsNum(n) {
 	let absNum = Math.abs(n);
 	let res = 0;
-	let mul = n < 0 ? -1 : 1;
 	while (absNum > 0) {
 		res = res * 10 + (absNum % 10);
 		absNum = Math.floor(absNum / 10);
 	}
-	return res * mul;
+	return res * Math.sign(n);
 }
 
 function reverseInt(n) {
