@@ -32,21 +32,34 @@ function maxCharBasic(str) {
 
 function maxCharObject(str) {
 	let charCount = {};
-	let maxChar = str[0];
 
 	for (c of str) {
-		charCount.hasOwnProperty(c) ? charCount[c]++ : (charCount[c] = 0);
+		charCount[c] = charCount[c] + 1 || 1;
 	}
 
-	Object.keys(charCount).reduce((count, key) => {
-		if (charCount[key] > count) {
-			maxChar = key;
-			return charCount[key];
-		}
-		return count;
-	}, 1);
+	const chars = Object.keys(charCount);
+	return chars.reduce(
+		(max, key) => (charCount[key] > charCount[max] ? key : max),
+		chars[0]
+	);
+}
 
-	return maxChar;
+function maxCharAlt(str) {
+	let obj = {};
+	let mostCommon = {
+		counter: 0,
+		value: ''
+	};
+
+	for (let character of str) {
+		obj[character] = character in obj ? obj[character] + 1 : 0;
+
+		if (mostCommon.value === '' || obj[character] > mostCommon.counter) {
+			mostCommon.value = character;
+			mostCommon.counter = obj[character];
+		}
+	}
+	return mostCommon.value;
 }
 
 function maxChar(str) {
