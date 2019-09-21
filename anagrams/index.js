@@ -37,7 +37,7 @@ function compareMaps(mapA, mapB) {
 	if (Object.keys(mapA).length !== Object.keys(mapB).length) return false;
 
 	for (let key in mapA) {
-		if (!mapA.hasOwnProperty(key) || mapB[key] !== mapA[key]) return false;
+		if (!mapB.hasOwnProperty(key) || mapB[key] !== mapA[key]) return false;
 	}
 
 	return true;
