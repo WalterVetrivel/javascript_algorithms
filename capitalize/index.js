@@ -7,11 +7,16 @@
 //   capitalize('a lazy fox') --> 'A Lazy Fox'
 //   capitalize('look, it is working!') --> 'Look, It Is Working!'
 
+function capitalizeRegExp(str) {
+	return str.replace(/^[a-z]|\s[a-z]/g, val => val.toUpperCase());
+}
+
 function capitalize(str) {
-	return str
+	/* return str
 		.split(' ')
 		.map(word => word[0].toUpperCase() + word.slice(1))
-		.join(' ');
+		.join(' '); */
+	return capitalizeRegExp(str);
 }
 
 module.exports = capitalize;
