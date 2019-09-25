@@ -17,6 +17,14 @@
 //       '### '
 //       '####'
 
-function steps(n) {}
+function generateStep(stepChar, lineNum, length) {
+	return stepChar.repeat(lineNum) + ' '.repeat(length - lineNum);
+}
+
+function steps(n) {
+	for (let i = 1; i <= n; i++) {
+		console.log(generateStep('#', i, n));
+	}
+}
 
 module.exports = steps;
