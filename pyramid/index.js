@@ -16,15 +16,30 @@
 
 function pyramidBruteForce(n) {
 	let level = '';
-	for (let i = 1; i <= n; i++) {
-		for (let j = 1; j <= n - i; j++) {
+	for (let row = 1; row <= n; row++) {
+		for (let column = 1; column <= n - row; column++) {
 			level += ' ';
 		}
-		for (let j = 0; j < i * 2 - 1; j++) {
+		for (let column = 0; column < row * 2 - 1; column++) {
 			level += '#';
 		}
-		for (let j = 1; j <= n - i; j++) {
+		for (let column = 1; column <= n - row; column++) {
 			level += ' ';
+		}
+		console.log(level);
+		level = '';
+	}
+}
+
+function pyramidBruteForceImproved(n) {
+	let level = '';
+	for (let row = 1; row <= n; row++) {
+		for (let column = 1; column <= n * 2 - 1; column++) {
+			if (column <= n - row || column > n - row + (2 * row - 1)) {
+				level += ' ';
+			} else {
+				level += '#';
+			}
 		}
 		console.log(level);
 		level = '';
@@ -40,14 +55,15 @@ function pyramidLevel(level, size) {
 }
 
 function pyramidRepeat(n) {
-	for (let i = 1; i <= n; i++) {
-		console.log(pyramidLevel(i, n));
+	for (let row = 1; row <= n; row++) {
+		console.log(pyramidLevel(row, n));
 	}
 }
 
 function pyramid(n) {
 	// pyramidBruteForce(n);
-	pyramidRepeat(n);
+	pyramidBruteForceImproved(n);
+	// pyramidRepeat(n);
 }
 
 module.exports = pyramid;
