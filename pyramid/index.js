@@ -46,6 +46,20 @@ function pyramidBruteForceImproved(n) {
 	}
 }
 
+function pyramidRecursive(n, level = 1) {
+	if (level === n) {
+		return console.log('#'.repeat(2 * level - 1));
+	}
+
+	console.log(
+		`${' '.repeat(n - level)}${'#'.repeat(2 * level - 1)}${' '.repeat(
+			n - level
+		)}`
+	);
+
+	return pyramidRecursive(n, level + 1);
+}
+
 function pyramidLevel(level, size) {
 	return (
 		' '.repeat(size - level) +
@@ -62,8 +76,9 @@ function pyramidRepeat(n) {
 
 function pyramid(n) {
 	// pyramidBruteForce(n);
-	pyramidBruteForceImproved(n);
+	// pyramidBruteForceImproved(n);
 	// pyramidRepeat(n);
+	pyramidRecursive(n);
 }
 
 module.exports = pyramid;
